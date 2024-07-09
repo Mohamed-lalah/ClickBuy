@@ -67,7 +67,7 @@ class LoginScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FormLabelWidget(label: "Don't have an account "),
+                FormLabelWidget(label: "Don't have an account ? "),
                 InkWell(
                     onTap:() {
                       Navigator.pushReplacementNamed(context, SignUpScreen.routeName);
