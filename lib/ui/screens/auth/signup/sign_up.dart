@@ -13,6 +13,7 @@ class SignUpScreen extends StatelessWidget {
   TextEditingController mobileNumberController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
    SignUpScreen({super.key});
 
   @override
