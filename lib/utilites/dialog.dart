@@ -2,7 +2,7 @@ import 'package:click_buy/utilites/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void showLoading (BuildContext context){
+void showMineLoading (BuildContext context){
 
   showDialog(
       context: context,

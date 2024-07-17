@@ -1,3 +1,5 @@
+import 'package:click_buy/data/repos/auth_repo/auth_repo.dart';
+import 'package:click_buy/domain/use_cases/login_use_case.dart';
 import 'package:click_buy/ui/screens/auth/login/login_view_model.dart';
 import 'package:click_buy/ui/screens/auth/signup/sign_up.dart';
 import 'package:click_buy/ui/screens/splash/splash_screen.dart';
@@ -16,7 +18,7 @@ class LoginScreen extends StatelessWidget {
  static const String routeName = "LoginScreen";
 
 
- LoginViewModel loginViewModel = LoginViewModel();
+ LoginViewModel loginViewModel = LoginViewModel(LoginUseCase(AuthRepoImpl()));
 
  LoginScreen({super.key,});
   @override
@@ -36,7 +38,7 @@ class LoginScreen extends StatelessWidget {
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
                  SizedBox(height: height*0.09,),
-                 Image.asset(AppAssets.routeIcon),
+                 Image.asset(AppAssets.logoRoute),
                  SizedBox(height: height*0.05,),
                  Align(
                      alignment: Alignment.topLeft,
@@ -113,7 +115,14 @@ class LoginScreen extends StatelessWidget {
          ),
        ),
        listener: (context ,state){
-         if (state is BaseLoadingStates) showLoading(context);
+         if (state is BaseLoadingStates) {
+           showMineLoading(context);
+         }
+
+         else if (state is BaseErrorState) {
+           Navigator.pop(context);
+           showErrorDialog(state.error, context);
+         }
        },
 
      ),
