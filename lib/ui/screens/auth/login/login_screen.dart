@@ -1,7 +1,7 @@
 import 'package:click_buy/data/repos/auth_repo/auth_repo.dart';
 import 'package:click_buy/domain/use_cases/login_use_case.dart';
 import 'package:click_buy/ui/screens/auth/login/login_view_model.dart';
-import 'package:click_buy/ui/screens/auth/signup/sign_up.dart';
+import 'package:click_buy/ui/screens/auth/register/register_screen.dart';
 import 'package:click_buy/ui/screens/splash/splash_screen.dart';
 import 'package:click_buy/utilites/app_assets.dart';
 import 'package:click_buy/utilites/app_colors.dart';
@@ -100,7 +100,7 @@ class LoginScreen extends StatelessWidget {
                      FormLabelWidget(label: "Don't have an account ? "),
                      InkWell(
                          onTap:() {
-                           Navigator.pushReplacementNamed(context, SignUpScreen.routeName);
+                           Navigator.pushReplacementNamed(context, RegisterScreen.routeName);
                          },
                          child: FormLabelWidget(label: "Create one ")),
 
@@ -120,8 +120,11 @@ class LoginScreen extends StatelessWidget {
          }
 
          else if (state is BaseErrorState) {
-           Navigator.pop(context);
+           hideLoading(context);
            showErrorDialog(state.error, context);
+         }
+         else if (state is BaseSuccessState){
+           hideLoading(context);
          }
        },
 

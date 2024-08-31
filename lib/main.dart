@@ -1,5 +1,5 @@
 import 'package:click_buy/ui/screens/auth/login/login_screen.dart';
-import 'package:click_buy/ui/screens/auth/signup/sign_up.dart';
+import 'package:click_buy/ui/screens/auth/register/register_screen.dart';
 import 'package:click_buy/ui/screens/splash/splash_screen.dart';
 import 'package:click_buy/utilites/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
       routes: {
         SplashScreen.routeName : (_)=> SplashScreen(),
         LoginScreen.routeName : (_)=> LoginScreen(),
-        SignUpScreen.routeName : (_)=> SignUpScreen()
+        RegisterScreen.routeName: (_)=> RegisterScreen()
+
       },
       initialRoute: SplashScreen.routeName,
     );
