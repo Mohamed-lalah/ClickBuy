@@ -17,8 +17,8 @@ class AuthRepoImpl extends AuthRepo {
          || connectivityResult == ConnectivityResult.mobile){
        Uri uri = Uri.https("ecommerce.routemisr.com","/api/v1/auth/signin",);
        Response serverResponse  = await post(uri , body: {
-         email:email,
-         password:password
+         "email": email,
+         "password": password
        });
        AuthResponse authResponse = AuthResponse.fromJson(jsonDecode(serverResponse.body));
        if (serverResponse.statusCode >=200 && serverResponse.statusCode<300){
@@ -41,7 +41,7 @@ class AuthRepoImpl extends AuthRepo {
 
 
       Uri uri = Uri.https("ecommerce.routemisr.com","/api/v1/auth/signup",);
-      Response serverResponse  = await post(uri , body: requestBody);
+      Response serverResponse  = await post(uri , body: requestBody.toJson());
 
 
       AuthResponse authResponse = AuthResponse.fromJson(jsonDecode(serverResponse.body));

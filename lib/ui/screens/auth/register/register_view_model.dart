@@ -22,9 +22,7 @@ class RegisterViewModel extends Cubit {
   RegisterViewModel(this.registerUseCase) : super (BaseInitialStates());
 
   void Register()async{
-    if (!globalKey.currentState!.validate()){
-      return null;
-    }
+    if (!globalKey.currentState!.validate()) return;
     else {
       emit(BaseLoadingStates());
      Either<Failure, bool>  either=  await registerUseCase.execute(RegisterRequestBody(

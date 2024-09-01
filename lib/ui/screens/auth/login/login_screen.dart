@@ -118,7 +118,6 @@ class LoginScreen extends StatelessWidget {
          if (state is BaseLoadingStates) {
            showMineLoading(context);
          }
-
          else if (state is BaseErrorState) {
            hideLoading(context);
            showErrorDialog(state.error, context);

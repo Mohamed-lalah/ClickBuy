@@ -19,10 +19,10 @@ class LoginViewModel extends Cubit {
 
 
   void Login ()async{
-      if (!formKey.currentState!.validate()) return null;
+      if (!formKey.currentState!.validate()) return ;
       emit(BaseLoadingStates());
      Either <Failure, bool > response = await
-     loginUseCase.execute(emailController.toString(), passwordController.toString());
+     loginUseCase.execute(emailController.text, passwordController.text);
      response.fold  ((error) {
          emit(BaseErrorState(error.error));} ,
              (succes) {
