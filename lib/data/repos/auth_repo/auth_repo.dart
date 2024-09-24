@@ -7,12 +7,16 @@ import 'package:click_buy/domain/repos/auth_repo/auth_repo.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart';
-
+import 'package:injectable/injectable.dart';
+@Injectable(as: AuthRepo)
 class AuthRepoImpl extends AuthRepo {
+    Connectivity connectivity;
+
+    AuthRepoImpl(this.connectivity);
 
   Future <Either<Failure ,bool>> Login (String email , String password)async{
 
-     ConnectivityResult connectivityResult = await Connectivity().checkConnectivity();
+     ConnectivityResult connectivityResult = await connectivity.checkConnectivity();
      if (connectivityResult==ConnectivityResult.wifi
          || connectivityResult == ConnectivityResult.mobile){
        Uri uri = Uri.https("ecommerce.routemisr.com","/api/v1/auth/signin",);
@@ -35,7 +39,7 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<Either<Failure, bool>> Register(RegisterRequestBody requestBody)async {
-    ConnectivityResult connectivityResult = await Connectivity().checkConnectivity();
+    ConnectivityResult connectivityResult = await connectivity.checkConnectivity();
     if (connectivityResult==ConnectivityResult.wifi
         || connectivityResult == ConnectivityResult.mobile){
 

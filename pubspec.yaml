@@ -30,16 +30,19 @@ dependencies:
   dartz: ^0.10.1
   http: ^1.1.0
   connectivity_plus: ^5.0.2
+  injectable: 2.3.2
+  get_it: 7.6.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  injectable_generator: 2.4.1
+  build_runner: 2.4.6
   flutter_lints: ^2.0.0
 
 
 flutter:
-  generate: true
+  generate: false
   uses-material-design: true
   assets:
     - assets/images/

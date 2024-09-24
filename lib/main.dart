@@ -1,3 +1,4 @@
+import 'package:click_buy/domain/di/di.dart';
 import 'package:click_buy/ui/screens/auth/login/login_screen.dart';
 import 'package:click_buy/ui/screens/auth/register/register_screen.dart';
 import 'package:click_buy/ui/screens/splash/splash_screen.dart';
@@ -5,6 +6,7 @@ import 'package:click_buy/utilites/app_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 

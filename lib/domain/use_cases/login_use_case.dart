@@ -2,7 +2,8 @@ import 'package:click_buy/data/model/faliure.dart';
 import 'package:click_buy/data/repos/auth_repo/auth_repo.dart';
 import 'package:click_buy/domain/repos/auth_repo/auth_repo.dart';
 import 'package:dartz/dartz.dart';
-
+import 'package:injectable/injectable.dart';
+@Injectable()
 class LoginUseCase {
 
  late  AuthRepo authRepo;

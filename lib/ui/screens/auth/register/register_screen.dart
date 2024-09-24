@@ -1,4 +1,5 @@
 import 'package:click_buy/data/repos/auth_repo/auth_repo.dart';
+import 'package:click_buy/domain/di/di.dart';
 import 'package:click_buy/domain/use_cases/register_use_case.dart';
 import 'package:click_buy/ui/screens/auth/login/login_screen.dart';
 import 'package:click_buy/ui/screens/auth/register/register_view_model.dart';
@@ -9,13 +10,14 @@ import 'package:click_buy/utilites/dialog.dart';
 import 'package:click_buy/widgets/login_and_signup/custom_text_field.dart';
 import 'package:click_buy/widgets/login_and_signup/custome_button.dart';
 import 'package:click_buy/widgets/login_and_signup/form_labe_widget.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterScreen extends StatelessWidget {
 
   static const String routeName = "RegisterScreen";
-   RegisterViewModel registerViewModel= RegisterViewModel(RegisterUseCase(AuthRepoImpl()));
+   RegisterViewModel registerViewModel= getIt();
    RegisterScreen({super.key});
 
   @override
@@ -79,7 +81,7 @@ class RegisterScreen extends StatelessWidget {
                              if (number == null ||  number.trim().isEmpty){
                                return "Please Enter Your Number ";
                              }
-                             if (number.trim().length<10){
+                             if (number.trim().length<11){
                                return "Phone Number Should be at least 10 numbers";
                              }
                              return null;
